@@ -1,47 +1,59 @@
 package dsa;
 
-import java.util.Arrays;
 import java.util.Scanner;
+public class BubbleSort {
 
-public class BubbleSortJavaMethodUserInput {
-	
-	//method for bubble sort
-	static void BubbleSort(int arr[]) {
-		//now we will write the code for sorting
-		int size = arr.length;
-		for(int i=0; i<size-1; i++) {
-			for(int j=0; j<size-1; j++) {
-				//now we will check the sort condition
-				if(arr[j+1]<arr[j]) {
-					//[j+1] because we will check the right side element with left side element
-					//if it is smaller than left side then we will swap the two elements
-					int temp = arr[j+1]; //temp variable for storing the [j+1] value
-					arr[j+1] = arr[j]; // here we swapped the two elements
-					arr[j] = temp; //now we restore the [j] value
-				} //if ends here
-			}//inner loop ends here
-		} //outer loop ends here
-	} //method ends here
-	
-	
-	//driver code
-	public static void main(String args[]) {
-		Scanner sc = new Scanner(System.in); //scanner class for user input
-		System.out.println("Enter the array size");
-		int size = sc.nextInt();
-		int arr[] = new int[size];
-		System.out.println("Enter array elements");
-		//insert the array
-		for(int i=0; i<arr.length; i++) {
-			arr[i] = sc.nextInt();
-		}
-		System.out.println("Array before sort "+Arrays.toString(arr));
-		
-		//now we will call main method to execute the sort method
-		BubbleSortJavaMethodUserInput.BubbleSort(arr);
-		
-		System.out.println("Arrays after Sorted "+Arrays.toString(arr));
-		
-	}
+    public static void main(String[] args) {
 
+        // Create a scanner object to read user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter the number of elements
+        System.out.println("Enter the number of elements: ");
+        int n = scanner.nextInt();
+
+        // Create an array to store the user input
+        int[] arr = new int[n];
+
+        // Prompt the user to enter the elements of the array
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter the element at index " + i + ": ");
+            arr[i] = scanner.nextInt();
+        }
+
+        // Print the unsorted array
+        System.out.println("Unsorted array: ");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+        // Bubble sort the array
+        bubbleSort(arr);
+
+        // Print the sorted array
+        System.out.println("\nSorted array: ");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void bubbleSort(int[] arr) {
+
+        // Loop through the array
+        for (int i = 0; i < arr.length - 1; i++) {
+
+            // Loop through the array from the beginning to the end
+            for (int j = 0; j < arr.length - i - 1; j++) {
+
+                // Compare the current element to the next element
+                if (arr[j] > arr[j + 1]) {
+
+                    // Swap the elements if they are not in order
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
 }
